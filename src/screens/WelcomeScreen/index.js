@@ -10,10 +10,6 @@ const WelcomeScreen = ({appTheme}) => {
         <View style={{flex: 1, backgroundColor: appTheme.backgroundColor}}>
             <Text style={{color: appTheme.textColor}}>Welcome Screen</Text>
 
-            <CustomButton text={'Next'} onPress={() => {
-                console.log('pressed');
-            }}/>
-
         </View>
     );
 };

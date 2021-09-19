@@ -116,8 +116,9 @@ export const FONTS = {
 export const darkTheme = {
   name: 'dark',
   backgroundColor: COLORS.black,
-  textColor: COLORS.white2,
-  borderColor: COLORS.black,
+  textColor: COLORS.white,
+  textColor2: COLORS.white2,
+  borderColor: COLORS.white2,
   tabBackgroundColor: COLORS.black,
   bottomTabBarBackgroundColor: COLORS.black,
   headerColor: COLORS.black,

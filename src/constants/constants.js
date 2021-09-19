@@ -1,20 +1,19 @@
-const promoTabs = [
+const slides = [
     {
         id: 1,
-        title: 'Stores',
+        title: 'Challenge with Friends',
+        image: require('../assets/images/WalkThrough/Illustration.png'),
     },
     {
         id: 2,
-        title: 'Kit of the Day',
-    },
-    {
-        id: 3,
-        title: 'Skin Deals',
+        title: 'Join the Challenge',
+        image: require('../assets/images/WalkThrough/Illustration2.png'),
+
     },
 ];
 
 const constants = {
-    promoTabs,
+    slides,
 };
 
 export default constants;
