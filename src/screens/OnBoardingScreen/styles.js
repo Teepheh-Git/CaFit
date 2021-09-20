@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     buttonContainer: {
-        width: SIZES.width,
+        // width: SIZES.width,
         bottom: 40,
     },
     dot: {

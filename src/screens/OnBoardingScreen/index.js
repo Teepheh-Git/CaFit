@@ -76,9 +76,7 @@ const OnBoardingScreen = ({appTheme}) => {
                 renderItem={({item}) => <OnBoardingItem item={item}/>}
                 onScroll={Animated.event(
                     [{nativeEvent: {contentOffset: {x: scrollX}}}],
-                    {
-                        useNativeDriver: false,
-                    },
+                    {useNativeDriver: false},
                 )}
                 onViewableItemsChanged={viewableItemsChanged}
                 viewabilityConfig={viewConfig}
