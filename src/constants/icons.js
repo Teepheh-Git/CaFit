@@ -1,9 +1,8 @@
-// const add = require('../assets/icons/add.png');
-// const bookmarkFilled = require('../assets/icons/bookmark-fill.png');
-// const bookmark = require('../assets/icons/bookmark.png');
-// const bubbleTea = require('../assets/icons/lipstick.png');
-// const heart = require('../assets/icons/heart.png');
-// const home = require('../assets/icons/home.png');
+const play = require('../assets/icons/Play.png');
+const map = require('../assets/icons/Location.png');
+const social = require('../assets/icons/Heart.png');
+const reward = require('../assets/icons/MedalGold.png');
+const home = require('../assets/icons/Home.png');
 // const leftArrow = require('../assets/icons/left-arrow.png');
 // const milk = require('../assets/icons/cosmetic.png');
 // const milk2 = require('../assets/icons/cosmetic2.png');
@@ -17,13 +16,12 @@
 // const coffee_cup = require('../assets/icons/boxtor.png');
 // const makeUpKit = require('../assets/icons/makeUpKit.png');
 
-// export default {
-//   add,
-//   bookmark,
-//   bookmarkFilled,
-//   bubbleTea,
-//   heart,
-//   home,
+export default {
+  play,
+  social,
+  map,
+  reward,
+  home,
 //   leftArrow,
 //   milk,
 //   milk2,
@@ -36,5 +34,5 @@
 //   search,
 //   coffee_cup,
 //   reward_cup: makeUpKit,
-// };
-//
+};
+

@@ -7,6 +7,8 @@ import {toggleTheme} from '../../stores/themeActions';
 import {connect} from 'react-redux';
 import OnBoardingItem from '../../components/OnboardingItem';
 import styles from './styles';
+import {useNavigation} from '@react-navigation/native';
+
 
 const Paginator = ({data, scrollX}) => {
     return (
@@ -42,12 +44,17 @@ const Paginator = ({data, scrollX}) => {
 };
 
 const OnBoardingScreen = ({appTheme}) => {
+
+    const navigation = useNavigation();
+
+
     const scrollTo = () => {
         if (currentIndex < constants.slides.length - 1) {
             slidesRef.current.scrollToIndex({
                 index: currentIndex + 1,
             });
         } else {
+            navigation.navigate('BottomTab');
             console.log('welcome');
         }
     };

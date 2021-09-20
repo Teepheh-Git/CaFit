@@ -100,7 +100,7 @@ export const SIZES = {
   height,
 };
 export const FONTS = {
-  largeTitle: {fontSize: SIZES.largeTitle, lineHeight: 46, fontFamily: 'bold'},
+  largeTitle: {fontSize: SIZES.largeTitle, lineHeight: 46, fontWeight: 'bold'},
   h1: {fontSize: SIZES.font1, lineHeight: 34, fontWeight: 'bold'},
   h2: {fontSize: SIZES.font2, lineHeight: 28, fontWeight: 'bold'},
   h3: {fontSize: SIZES.font3, lineHeight: 26, fontWeight: 'bold'},

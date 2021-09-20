@@ -29,7 +29,7 @@ const WelcomeScreen = ({appTheme, toggleTheme}) => {
             <Text style={[styles.text2, {color: appTheme.textColor2}]}>We need to work out safely during Covid-19 and
                 CaFit is here to help</Text>
 
-            {/*<CustomButton text={'Let\'s Walk'} onPress={() => toggleThemeHandler()}/>*/}
+            <CustomButton text={'Let\'s Walk'} onPress={() => toggleThemeHandler()}/>
             <CustomButton text={'Let\'s Walk'} onPress={() => navigation.navigate('OnBoardScreen')}/>
 
         </View>
