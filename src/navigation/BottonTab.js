@@ -125,7 +125,7 @@ const BottomTab = ({appTheme}) => {
                                         height: 70,
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        bottom: 20,
+                                        bottom: 30,
                                         borderRadius: 35,
                                     }}
                                     colors={[COLORS.orange, COLORS.orange2]}>

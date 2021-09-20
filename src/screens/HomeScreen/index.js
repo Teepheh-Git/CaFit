@@ -1,12 +1,14 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {toggleTheme} from '../../stores/themeActions';
 import {connect} from 'react-redux';
+import TopModal from '../../components/TopModal';
 
 const HomeScreen = ({appTheme}) => {
     return (
         <View style={{flex: 1, backgroundColor: appTheme.backgroundColor, justifyContent: 'center'}}>
-            <Text style={{color: appTheme.textColor}}>HomeScreen</Text>
+            <TopModal/>
+
         </View>
     );
 };
