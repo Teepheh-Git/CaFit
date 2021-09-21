@@ -55,7 +55,6 @@ const OnBoardingScreen = ({appTheme}) => {
             });
         } else {
             navigation.navigate('BottomTab');
-            console.log('welcome');
         }
     };
 

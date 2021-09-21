@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import {Animated, Dimensions, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import Svg, {Path} from 'react-native-svg';
+import {Animated, Dimensions, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {toggleTheme} from '../../stores/themeActions';
 import {connect} from 'react-redux';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {Calendar} from 'react-native-calendars';
+import {COLORS, FONTS, SIZES} from '../../constants/theme';
+import icons from '../../constants/icons';
+import {Svg4} from '../../constants/Svg';
 
 const W = Dimensions.get('window').width;
 const H = Dimensions.get('window').height;
@@ -11,6 +13,21 @@ const H = Dimensions.get('window').height;
 const TopModal = ({appTheme}) => {
 
     const [modalY, setModalY] = useState(new Animated.Value(-H));
+
+    const [selectedDay, setSelectedDay] = useState('');
+
+    const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
+    const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
+    const workout = {key: 'workout', color: 'green'};
+
+    const date = new Date();
+
+    const day = date.getDay();
+    const month = date.getMonth();
+    const daylist = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    const monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 
     function openModal() {
         Animated.timing(modalY, {
@@ -32,31 +49,121 @@ const TopModal = ({appTheme}) => {
         return (
             <Animated.View
                 style={[styles.modal, {backgroundColor: appTheme.backgroundColor2}, {transform: [{translateY: modalY}]}]}>
+                <Calendar
+                    onDayPress={(day) => {
+                        console.log(day);
+                    }}
+                    hideArrows={true}
+                    style={{top: 220}}
+                    enableSwipeMonths={true}
+                    hideDayNames={true}
+                    markingType={'custom'}
+                    renderHeader={(date) => {
+                        return (
+                            <View style={{
+                                width: SIZES.width,
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                            }}>
 
-                <Svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={'100%'}
-                    height={61}
-                    viewBox="0 0 90 61"
-                >
-                    <Path
-                        d="M0 0a38.742 38.742 0 0113 7c5.313 4.4 6.7 8.593 12 13 5.993 4.98 12.987 8 20 8s14.007-3.02 20-8c5.3-4.408 6.687-8.6 12-13a38.742 38.742 0 0113-7v61H0V0z"
-                        fill="#4d4d4d"
-                        fillRule="evenodd"
-                    />
-                </Svg>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        closeModal();
+                                    }}
+                                    style={{
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        height: 56,
+                                        width: 56,
+                                        // left: 10,
+                                        margin: 10,
+                                        borderRadius: 35,
+                                        borderColor: appTheme.textColor2,
+                                        borderWidth: 0.3,
+                                    }}>
+                                    <Image source={icons.leftArrow}
+                                           style={{tintColor: appTheme.textColor2, height: 20, width: 20}}/>
+                                </TouchableOpacity>
+                                <View style={{alignItems: 'center', justifyContent: 'center', right: 120}}>
+                                    <Text style={{color: appTheme.textColor2, ...FONTS.body4}}>{daylist[day]}, </Text>
+                                    <View style={{flexDirection: 'row'}}>
+                                        <Text style={{color: appTheme.textColor, ...FONTS.h2}}>{date.getDate()} </Text>
+                                        <Text style={{color: appTheme.textColor, ...FONTS.h2}}>{monthList[month]}</Text>
+                                    </View>
 
+                                </View>
+                            </View>
 
-                <Text style={styles.buttonText}>Show Modal</Text>
-                <Text style={styles.buttonText}>Show Modal</Text>
-                <Text style={styles.buttonText}>Show Modal</Text>
-                <Text style={styles.buttonText}>Show Modal</Text>
-                <Text style={styles.buttonText}>Show Modal</Text>
-                <Text style={styles.buttonText}>Show Modal</Text>
-                <TouchableOpacity onPress={closeModal} style={styles.button}>
-                    <Text style={styles.buttonText}>Close Modal</Text>
+                        );
+                    }}
+                    markedDates={{
+                        '2021-09-18': {
+                            customStyles: {
+                                container: {
+                                    backgroundColor: 'transparent',
+                                },
+                                text: {
+                                    color: appTheme.textColor,
+                                    textDecorationLine: 'underline',
+                                    textDecorationColor: COLORS.green,
+                                    textDecorationStyle: 'solid',
+                                },
+                            },
+                        },
+                        '2021-09-29': {
+                            customStyles: {
+                                container: {
+                                    backgroundColor: 'transparent',
+                                    elevation: 2,
+                                },
+                                text: {
+                                    color: appTheme.textColor,
+                                    textDecorationLine: 'underline',
+                                    textDecorationColor: COLORS.orange,
+                                    textDecorationStyle: 'solid',
+                                },
+                            },
+                        },
+                        '2021-09-21': {
+                            customStyles: {
+                                container: {
+                                    backgroundColor: COLORS.CustomOrange,
+                                    elevation: 2,
+                                },
+                                text: {
+                                    color: appTheme.textColor,
+                                },
+                            },
+                        },
 
-                </TouchableOpacity>
+                    }}
+                    theme={{
+                        // backgroundColor: appTheme.backgroundColor,
+                        calendarBackground: appTheme.backgroundColor2,
+                        textSectionTitleColor: '#b6c1cd',
+                        textSectionTitleDisabledColor: '#d9e1e8',
+                        selectedDayBackgroundColor: '#00adf5',
+                        selectedDayTextColor: 'red',
+                        todayTextColor: appTheme.textColor,
+                        dayTextColor: appTheme.textColor,
+                        textDisabledColor: COLORS.transparentWhite,
+                        dotColor: '#00adf5',
+                        selectedDotColor: '#ffffff',
+                        arrowColor: 'orange',
+                        disabledArrowColor: '#d9e1e8',
+                        // monthTextColor: 'blue',
+                        // indicatorColor: 'blue',
+                        textDayFontWeight: 'normal',
+                        textMonthFontWeight: 'normal',
+                        textDayHeaderFontWeight: '300',
+                        textDayFontSize: 14,
+                        textMonthFontSize: 12,
+                        textDayHeaderFontSize: 16,
+                    }}
+                />
+
+                {/*<Svg4 />*/}
 
             </Animated.View>
         );
@@ -65,10 +172,15 @@ const TopModal = ({appTheme}) => {
 
 
     return (
-        <View style={{flex: 1, backgroundColor: appTheme.backgroundColor, justifyContent: 'center'}}>
+        <View style={{
+            flex: 1,
+            backgroundColor: appTheme.backgroundColor,
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}>
 
             <TouchableOpacity onPress={openModal} style={styles.button}>
-                <Text style={styles.buttonText}>Show Modal</Text>
+                <Text style={styles.buttonText}>Show</Text>
             </TouchableOpacity>
             {Modal()}
         </View>
@@ -80,11 +192,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
     },
     button: {
         backgroundColor: 'blue',
         alignItems: 'center',
         height: 30,
+        width: 50,
         justifyContent: 'center',
     },
     buttonText: {
@@ -94,7 +208,6 @@ const styles = StyleSheet.create({
         height: H,
         width: W,
         position: 'absolute',
-        top: 0,
         left: 0,
         // backgroundColor: 'gray',
         justifyContent: 'center',

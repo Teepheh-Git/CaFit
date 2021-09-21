@@ -131,6 +131,7 @@ export const lightTheme = {
     backgroundColor: COLORS.white,
     backgroundColor2: COLORS.white2,
     textColor: COLORS.black,
+    textColor2: COLORS.grey,
     borderColor: COLORS.black,
     tabBackgroundColor: COLORS.white,
     bottomTabBarBackgroundColor: COLORS.white,
